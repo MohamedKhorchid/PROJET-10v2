@@ -11,10 +11,16 @@ import Icon from "../../components/Icon";
 import Form from "../../containers/Form";
 import Modal from "../../containers/Modal";
 import { useData } from "../../contexts/DataContext";
+import ModalEvent from "../../containers/ModalEvent";
+
 
 const Page = () => {
-  const {last} = useData()
+  const {data} = useData()
+  const last = data?.events?.sort((evtA, evtB) => 
+              new Date(evtB.date) - new Date(evtA.date)) [0]
+
   return <>
+  {/** Permet de trier les éléments du carousel du plus ancien au plus récent */}
     <header>
       <Menu />
     </header>
@@ -116,13 +122,18 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        <EventCard
-          imageSrc={last?.cover}
-          title={last?.title}
-          date={new Date(last?.date)}
-          small
-          label="boom"
-        />
+        {/** Permet d'ouvrir une modale au clic sur la carte de la dernière prestation */}
+         <Modal key={last?.id} Content={<ModalEvent event={last}/>}>
+          {({ setIsOpened }) => (
+            <EventCard
+              onClick={() => setIsOpened(true)}
+              imageSrc={last?.cover}
+              title={last?.title}
+              date={new Date(last?.date)}
+              label={last?.type}
+            />
+          )}
+         </Modal>
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
