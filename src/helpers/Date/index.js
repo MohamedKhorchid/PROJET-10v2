@@ -13,4 +13,5 @@ export const MONTHS = {
   12: "décembre",
 };
 
+// Permet d'afficher les bons mois pour chaque projet
 export const getMonth = (date) => MONTHS[date.getMonth() + 1];

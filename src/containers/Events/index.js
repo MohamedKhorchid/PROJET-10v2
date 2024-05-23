@@ -16,6 +16,7 @@ const EventList = () => {
   const filteredEvents = (
     (!type
       ? data?.events
+      // Tri des cartes de chaque évènement en fonction de leur type pour un filtrage
       : data?.events.filter((event) => event.type === type)) || []
   ).filter((event, index) => {
     if (

@@ -16,6 +16,7 @@ const Select = ({
   const [value, setValue] = useState();
   const [collapsed, setCollapsed] = useState(true);
   const changeValue = (newValue) => {
+    // Quand une valeur du menu déroulant est sélectionnée, cela s'affiche directement
     onChange(newValue);
     setValue(newValue);
     setCollapsed(newValue);

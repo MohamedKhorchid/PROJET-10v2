@@ -15,12 +15,12 @@ import ModalEvent from "../../containers/ModalEvent";
 
 
 const Page = () => {
+  // Permet de récupérer la carte correspondant à l'évènement le plus récent
   const {data} = useData()
   const last = data?.events?.sort((evtA, evtB) => 
               new Date(evtB.date) - new Date(evtA.date)) [0]
 
   return <>
-  {/** Permet de trier les éléments du carousel du plus ancien au plus récent */}
     <header>
       <Menu />
     </header>

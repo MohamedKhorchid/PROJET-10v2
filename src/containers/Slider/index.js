@@ -7,6 +7,7 @@ import "./style.scss";
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
+  // Changement de sens du signe ">" pour que les projets dans le caroussel d'affichent du plus ancien au plus récent
   const byDateDesc = data?.focus.sort((evtA, evtB) =>
     new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
   );
@@ -42,6 +43,7 @@ const Slider = () => {
           </div>
           <div className="SlideCard__paginationContainer">
             <div className="SlideCard__pagination">
+              {/* Ajout de la fonctionnalité permettant de faire défiler les bullet point du caroussel */}
               {byDateDesc?.map((dot, radioIdx) => (
                 <input
                   key={dot.title}
