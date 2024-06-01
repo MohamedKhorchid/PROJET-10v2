@@ -14,10 +14,9 @@ const EventList = () => {
   const [type, setType] = useState();
   const [currentPage, setCurrentPage] = useState(1);
   const filteredEvents = (
-    (!type
-      ? data?.events
+    (!type ? data?.events : data?.events.filter((event) => event.type === type)) || []
       // Tri des cartes de chaque évènement en fonction de leur type pour un filtrage
-      : data?.events.filter((event) => event.type === type)) || []
+      
   ).filter((event, index) => {
     if (
       (currentPage - 1) * PER_PAGE <= index &&

@@ -18,6 +18,7 @@ const Form = ({ onSuccess, onError }) => {
         setSending(false);
         // Ajout de la fonction affichant un message de confirmation à l'envoie d'un formulaire
         onSuccess()
+        console.log("message envoyé")
       } catch (err) {
         setSending(false);
         onError(err);
